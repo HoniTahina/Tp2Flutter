@@ -10,6 +10,7 @@ import 'package:tp2/composants/label.dart';
 import 'package:tp2/composants/textfield.dart';
 import 'package:tp2/composants/texteArea.dart';
 import 'package:intl/intl.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
 class PageAjout extends StatefulWidget {
   PageAjout({super.key});
@@ -24,12 +25,14 @@ class _PageAjoutState extends State<PageAjout> {
   final _dateFinControl = TextEditingController();
   final _descriptionControlleur = TextEditingController();
   DateTime _selectedDate = DateTime.now();
+  firebase_auth.FirebaseAuth firebaseAuth = firebase_auth.FirebaseAuth.instance;
   String tachePriorite = "";
   String tacheCategorie = "";
   final _dateFin = TextEditingController();
   final _dateDebut = TextEditingController();
   void _Ajouter() {
     FirebaseFirestore.instance.collection('Tache').add({
+      'id': firebaseAuth.currentUser!.uid,
       'date_fin': _dateFinControl.text,
       'date_debut': _dateDebutControl.text,
       'categorie': tacheCategorie,
