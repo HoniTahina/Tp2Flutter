@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:tp2/composants/cardTache.dart';
 import 'package:tp2/page/ajout_tache.dart';
 import 'package:tp2/page/signin.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:tp2/page/tacheDetails.dart';
 import 'package:tp2/services/auth-service.dart';
 
@@ -15,6 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  firebase_auth.FirebaseAuth firebaseAuth = firebase_auth.FirebaseAuth.instance;
   final Stream<QuerySnapshot> _stream =
       FirebaseFirestore.instance.collection('Tache').snapshots();
   List<Selectionner> selectionne = [];
@@ -118,7 +120,10 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: StreamBuilder(
-          stream: _stream,
+          stream: FirebaseFirestore.instance
+              .collection('Tache')
+              .where('id', isEqualTo: firebaseAuth.currentUser!.uid)
+              .snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return Center(child: CircularProgressIndicator());
