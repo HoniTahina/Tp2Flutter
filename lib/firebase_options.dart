@@ -60,6 +60,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '52620996606',
     projectId: 'tp2-gestion-de-taches-f3a5e',
     storageBucket: 'tp2-gestion-de-taches-f3a5e.appspot.com',
+    androidClientId: '52620996606-au2m1ptd1qp477361ap1nv347r0p67h3.apps.googleusercontent.com',
     iosClientId: '52620996606-32t80etoi8p443pqk4b2v2ubtg0hdoeu.apps.googleusercontent.com',
     iosBundleId: 'com.example.tp2',
   );
@@ -70,6 +71,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '52620996606',
     projectId: 'tp2-gestion-de-taches-f3a5e',
     storageBucket: 'tp2-gestion-de-taches-f3a5e.appspot.com',
+    androidClientId: '52620996606-au2m1ptd1qp477361ap1nv347r0p67h3.apps.googleusercontent.com',
     iosClientId: '52620996606-8jvvh92tau2oet0mvnp7h54u5uqh9p0v.apps.googleusercontent.com',
     iosBundleId: 'com.example.tp2.RunnerTests',
   );

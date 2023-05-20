@@ -10,6 +10,7 @@ import 'package:tp2/services/auth-service.dart';
 import '../composants/bouttounLogo.dart';
 import '../composants/bouttonLogin.dart';
 import '../composants/champDeSaisie.dart';
+import 'Reset.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -88,7 +89,7 @@ class _LoginState extends State<Login> {
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 Text(
-                  "Pas encore de cmopte?",
+                  "Pas encore de compte?",
                   style: TextStyle(fontSize: 16),
                 ),
                 InkWell(
@@ -108,6 +109,39 @@ class _LoginState extends State<Login> {
                   },
                   child: Text(
                     "Inscription",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 17,
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Text(
+                  "Mot de passe oublier?",
+                  style: TextStyle(fontSize: 16),
+                ),
+                InkWell(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                    );
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (builder) => Reset()),
+                        (route) => false);
+                  },
+                  child: Text(
+                    "clic ici",
                     style: TextStyle(
                       color: Colors.blue,
                       fontSize: 17,
@@ -151,7 +185,8 @@ class _LoginState extends State<Login> {
           MaterialPageRoute(builder: (builder) => HomePage()),
           (route) => false);
     } on FirebaseException catch (e) {
-      final snackbar = SnackBar(content: Text(e.toString()));
+      final snackbar =
+          SnackBar(content: Text("Email ou Mot de passe incorrect"));
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
   }

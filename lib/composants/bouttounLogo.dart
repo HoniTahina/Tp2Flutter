@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tp2/services/auth-service.dart';
+
+import '../services/auth-service.dart';
 
 class Bouton extends StatelessWidget {
   final String imagePath;
