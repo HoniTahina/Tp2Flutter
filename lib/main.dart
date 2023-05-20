@@ -22,7 +22,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // firebase_auth.FirebaseAuth firebaseAuth = firebase_auth.FirebaseAuth.instance;
+  //firebase_auth.FirebaseAuth firebaseAuth = firebase_auth.FirebaseAuth.instance;
   Widget currentPage = Login();
   Service authClass = Service();
   @override
@@ -37,20 +37,6 @@ class _MyAppState extends State<MyApp> {
       currentPage = HomePage();
     }
   }
-  // void connexion() async {
-  //   try {
-  //     await firebaseAuth.createUserWithEmailAndPassword(
-  //         email: 'mamadev@herbidev.com', password: 'password123');
-
-  //     await firebaseAuth.createUserWithEmailAndPassword(
-  //         email: 'herbilot@herbidev.com', password: 'password123');
-
-  //     await firebaseAuth.createUserWithEmailAndPassword(
-  //         email: 'papadev@herbidev.com', password: 'password123');
-  //   } on FirebaseException catch (e) {
-  //     print(e);
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {

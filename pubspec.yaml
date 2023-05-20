@@ -40,6 +40,9 @@ dependencies:
   google_sign_in: ^6.1.0
   flutter_secure_storage: ^8.0.0
   intl: ^0.17.0
+  flutter_facebook_auth: ^5.0.11
+  rename_app: ^1.1.0
+  http: ^0.13.6
 
 dev_dependencies:
   flutter_test:

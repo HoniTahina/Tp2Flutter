@@ -5,7 +5,7 @@ class CardTache extends StatelessWidget {
   final IconData icon;
   final Color couleurIcon;
   final Color bgIcon;
-  final String heure;
+  final String etat;
   final bool coche;
   final Function? changementEtat;
   final Function? onChanged;
@@ -16,7 +16,7 @@ class CardTache extends StatelessWidget {
       required this.libelleTache,
       required this.icon,
       required this.couleurIcon,
-      required this.heure,
+      required this.etat,
       required this.bgIcon,
       required this.coche,
       this.changementEtat,
@@ -90,7 +90,7 @@ class CardTache extends StatelessWidget {
                       width: 50,
                     ),
                     Text(
-                      heure,
+                      etat,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
