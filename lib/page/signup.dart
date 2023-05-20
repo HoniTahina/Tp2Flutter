@@ -142,8 +142,7 @@ class _SignupState extends State<Signup> {
         (route) => false,
       );
     } on FirebaseException catch (e) {
-      final snackbar =
-          SnackBar(content: Text("HAHAHA T'as fait n'importe quoi"));
+      final snackbar = SnackBar(content: Text(e.toString()));
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
   }
