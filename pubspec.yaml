@@ -43,6 +43,10 @@ dependencies:
   flutter_facebook_auth: ^5.0.11
   rename_app: ^1.1.0
   http: ^0.13.6
+  flutter_native_splash: ^2.2.0+1
+
+flutter_native_splash:
+  background_image: lib/images/bak.png
 
 dev_dependencies:
   flutter_test:
