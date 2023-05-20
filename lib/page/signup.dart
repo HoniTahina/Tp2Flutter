@@ -64,7 +64,7 @@ class _SignupState extends State<Signup> {
             ),
             SizedBox(height: 100),
             champDeSaisie(
-              hintText: 'Nom d\'utilisateur',
+              hintText: 'Votre e-mail',
               controlleur: utilisateurControlleur,
               obscureText: false,
             ),
