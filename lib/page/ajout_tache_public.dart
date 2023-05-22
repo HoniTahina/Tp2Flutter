@@ -34,8 +34,8 @@ class _PageAjoutPublicState extends State<PageAjoutPublic> {
   final _dateDebut = TextEditingController();
   void _Ajouter() {
     FirebaseFirestore.instance.collection('TachePublic').add({
-      'date_fin': _dateFin,
-      'date_debut': _dateDebut,
+      'date_fin': _dateFinControl.text,
+      'date_debut': _dateDebutControl.text,
       'categorie': tacheCategorie,
       'description': _descriptionControlleur.text,
       'libelle': _libelleControlleur.text,

@@ -95,13 +95,13 @@ class _HomePageState extends State<TachePublic> {
                       Color(0xff2d388a),
                     ])),
                 child: Icon(
-                  Icons.home,
+                  Icons.person_3_sharp,
                   size: 32,
                   color: Colors.white,
                 ),
               ),
             ),
-            label: 'home',
+            label: 'Private',
           ),
           BottomNavigationBarItem(
             icon: InkWell(
