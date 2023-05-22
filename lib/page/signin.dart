@@ -31,7 +31,6 @@ class _LoginState extends State<Login> {
           child: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Color.fromARGB(255, 28, 64, 115),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           // ignore: prefer_const_literals_to_create_immutables
@@ -63,6 +62,14 @@ class _LoginState extends State<Login> {
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 Center(child: Bouton(imagePath: 'lib/images/search.png')),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Center(child: Bouton(imagePath: 'lib/images/fb.png')),
               ],
             ),
             SizedBox(height: 100),
@@ -154,7 +161,7 @@ class _LoginState extends State<Login> {
               height: 50,
             ),
             Text(
-              "Copyright@DreamTeam2023",
+              "Copyright@groupe7",
               style: TextStyle(
                   fontSize: 12,
                   color: const Color.fromARGB(255, 255, 255, 255)),

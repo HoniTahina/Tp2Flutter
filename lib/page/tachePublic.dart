@@ -34,7 +34,7 @@ class _HomePageState extends State<TachePublic> {
         title: Text(
           'Taches publiques',
           style: TextStyle(
-            fontSize: 34,
+            fontSize: 28,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
@@ -51,7 +51,7 @@ class _HomePageState extends State<TachePublic> {
                         : ThemeMode.light;
               }),
           SizedBox(
-            height: 25,
+            height: 22,
           ),
           IconButton(
               onPressed: () async {

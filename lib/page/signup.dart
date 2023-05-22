@@ -28,7 +28,6 @@ class _SignupState extends State<Signup> {
           child: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Color.fromARGB(255, 30, 119, 36),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           // ignore: prefer_const_literals_to_create_immutables
@@ -110,7 +109,7 @@ class _SignupState extends State<Signup> {
               height: 50,
             ),
             Text(
-              "Copyright@DreamTeam2023",
+              "Copyright@groupe7",
               style: TextStyle(
                   fontSize: 12,
                   color: const Color.fromARGB(255, 255, 255, 255)),
@@ -142,7 +141,7 @@ class _SignupState extends State<Signup> {
         (route) => false,
       );
     } on FirebaseException catch (e) {
-      final snackbar = SnackBar(content: Text(e.toString()));
+      final snackbar = SnackBar(content: Text('Email invalide'));
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
   }

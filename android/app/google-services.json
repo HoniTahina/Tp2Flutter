@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "52620996606",
+    "project_id": "tp2-gestion-de-taches-f3a5e",
+    "storage_bucket": "tp2-gestion-de-taches-f3a5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52620996606:android:02555cded42637a7089aaf",
+        "android_client_info": {
+          "package_name": "dev.herbilot_tahina.tp2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52620996606-au2m1ptd1qp477361ap1nv347r0p67h3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.herbilot_tahina.tp2",
+            "certificate_hash": "88f026fe836d2585e4c67a7b12c97ae720720e87"
+          }
+        },
+        {
+          "client_id": "52620996606-e5gfd4iua26ldvqvqr778imrp82qsku3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.herbilot_tahina.tp2",
+            "certificate_hash": "e8baeb75d3c9af083ef5ff9de44dae656b96d723"
+          }
+        },
+        {
+          "client_id": "52620996606-fln6crs5rnig2smshi0n0imev0f6l6r7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.herbilot_tahina.tp2",
+            "certificate_hash": "12d1074396963154483ee8b11693164e5e445a16"
+          }
+        },
+        {
+          "client_id": "52620996606-ft3q4e3dsq4c900rbj5g5s9c7db14u2s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.herbilot_tahina.tp2",
+            "certificate_hash": "86b7b55a7dde5b35e0534e690f7a36bfd93b7d7b"
+          }
+        },
+        {
+          "client_id": "52620996606-pcmvfitlagp2cc84jtonrvdttv1se40v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.herbilot_tahina.tp2",
+            "certificate_hash": "3c7182085401993ef3c7ce7e43a17ccb6f37bc56"
+          }
+        },
+        {
+          "client_id": "52620996606-o8gk64n6rafmfq36qke62b4ku27qmc6e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnKwPZesGAD_GjPMdkpOHQkIXOfBc1Drs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52620996606-o8gk64n6rafmfq36qke62b4ku27qmc6e.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "52620996606-32t80etoi8p443pqk4b2v2ubtg0hdoeu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tp2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

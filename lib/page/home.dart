@@ -184,10 +184,10 @@ class _HomePageState extends State<HomePage> {
                 //   etat = 'En attente';
                 // }
                 // if (dateFin.compareTo(currentDate) > 0) {
-                //   etat = 'isBefore';
+                //   etat = 'expiré';
                 // }
                 // if (dateDebut.compareTo(currentDate) < 0 && dateFin.compareTo(currentDate) > 0 ) {
-                //   etat = 'isBefore';
+                //   etat = 'en cours';
                 // }
 
                 switch (tache['categorie']) {
