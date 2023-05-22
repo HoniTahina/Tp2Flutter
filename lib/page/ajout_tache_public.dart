@@ -12,14 +12,14 @@ import 'package:tp2/composants/texteArea.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
-class PageAjout extends StatefulWidget {
-  PageAjout({super.key});
+class PageAjoutPublic extends StatefulWidget {
+  PageAjoutPublic({super.key});
 
   @override
-  State<PageAjout> createState() => _PageAjoutState();
+  State<PageAjoutPublic> createState() => _PageAjoutPublicState();
 }
 
-class _PageAjoutState extends State<PageAjout> {
+class _PageAjoutPublicState extends State<PageAjoutPublic> {
   final _libelleControlleur = TextEditingController();
   final _dateDebutControl = TextEditingController();
   final _dateFinControl = TextEditingController();
@@ -33,10 +33,9 @@ class _PageAjoutState extends State<PageAjout> {
   final _dateFin = TextEditingController();
   final _dateDebut = TextEditingController();
   void _Ajouter() {
-    FirebaseFirestore.instance.collection('Tache').add({
-      'id': firebaseAuth.currentUser!.uid,
-      'date_fin': _dateFinControl.text,
-      'date_debut': _dateDebutControl.text,
+    FirebaseFirestore.instance.collection('TachePublic').add({
+      'date_fin': _dateFin,
+      'date_debut': _dateDebut,
       'categorie': tacheCategorie,
       'description': _descriptionControlleur.text,
       'libelle': _libelleControlleur.text,

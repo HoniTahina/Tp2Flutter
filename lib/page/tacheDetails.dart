@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:tp2/composants/button.dart';
 import 'package:tp2/composants/buttonUpdate.dart';
 import 'package:tp2/composants/chipBox.dart';
@@ -28,7 +29,8 @@ class _TacheDetails extends State<TacheDetails> {
   late String tachePriorite;
   late String tacheCategorie;
   bool modifier = false;
-
+  late DateTime dateD;
+  late DateTime dateF;
   @override
   void initState() {
     _libelleControlleur = TextEditingController(text: widget.tache['libelle']);
@@ -44,8 +46,8 @@ class _TacheDetails extends State<TacheDetails> {
 
   void _Modifier() {
     FirebaseFirestore.instance.collection('Tache').doc(widget.id).update({
-      'date_fin': _dateFinControl.text,
-      'date_debut': _dateDebutControl.text,
+      'date_fin': _dateDebutControl.text,
+      'date_debut': _dateFinControl.text,
       'categorie': tacheCategorie,
       'description': _descriptionControlleur.text,
       'libelle': _libelleControlleur.text,
@@ -209,6 +211,7 @@ class _TacheDetails extends State<TacheDetails> {
                   champDate(
                     hintText: 'dd/mm/yyyy',
                     dateControlleur: _dateDebutControl,
+                    // date: dateD,
                   ),
                   SizedBox(height: 15),
                   label('Date fin'),
@@ -216,6 +219,7 @@ class _TacheDetails extends State<TacheDetails> {
                   champDate(
                     hintText: 'dd/mm/yyyy',
                     dateControlleur: _dateFinControl,
+                    // date: dateF,
                   ),
                   SizedBox(height: 15),
                   modifier ? butonUpdate(onTap: _Modifier) : Container()

@@ -3,27 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tp2/composants/cardTache.dart';
 import 'package:tp2/page/ajout_tache.dart';
+import 'package:tp2/page/ajout_tache_public.dart';
+import 'package:tp2/page/home.dart';
 import 'package:tp2/page/signin.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:tp2/page/tacheDetails.dart';
-import 'package:tp2/page/tachePublic.dart';
 import 'package:tp2/services/auth-service.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class TachePublic extends StatefulWidget {
+  const TachePublic({super.key});
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<TachePublic> {
   firebase_auth.FirebaseAuth firebaseAuth = firebase_auth.FirebaseAuth.instance;
   final Stream<QuerySnapshot> _stream =
-      FirebaseFirestore.instance.collection('Tache').snapshots();
+      FirebaseFirestore.instance.collection('TachePublic').snapshots();
   List<Selectionner> selectionne = [];
   Service authClass = Service();
   DateTime jour = DateTime.now();
-
   String etat = 'en cours';
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Color(0xff1040CC),
         title: Text(
-          'Taches private',
+          'Taches publiques',
           style: TextStyle(
             fontSize: 34,
             fontWeight: FontWeight.bold,
@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
             icon: InkWell(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (builder) => PageAjout()));
+                    MaterialPageRoute(builder: (builder) => PageAjoutPublic()));
               },
               child: Container(
                 height: 52,
@@ -154,10 +154,8 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: StreamBuilder(
-          stream: FirebaseFirestore.instance
-              .collection('Tache')
-              .where('id', isEqualTo: firebaseAuth.currentUser!.uid)
-              .snapshots(),
+          stream:
+              FirebaseFirestore.instance.collection('TachePublic').snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return Center(child: CircularProgressIndicator());
@@ -169,12 +167,9 @@ class _HomePageState extends State<HomePage> {
                     snapshot.data?.docs[index].data() as Map<String, dynamic>;
                 IconData icon;
                 Color couleurIcon;
-                // DateTime dateDebut =
-                //     DateTime.parse(tache['date_debut'].toString());
-                // DateTime currentDate = DateTime.now();
 
-                // if (dateDebut.compareTo(currentDate) < 0) {
-                //   etat = 'isBefore';
+                // if (tache['date_debut'] > DateTime.now()) {
+                //   etat = 'En attente';
                 // }
                 // if (tache['date_debut'] < DateTime.now() &&
                 //     tache['date_fin'] > DateTime.now()) {

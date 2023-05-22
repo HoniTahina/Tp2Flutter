@@ -4,9 +4,11 @@ import 'package:intl/intl.dart';
 class champDate extends StatelessWidget {
   final dateControlleur;
   final String hintText;
-  const champDate({
+  // DateTime date;
+  champDate({
     super.key,
     required this.hintText,
+    // required this.date,
     required this.dateControlleur,
   });
 
@@ -41,6 +43,7 @@ class champDate extends StatelessWidget {
               firstDate: DateTime(2022),
               lastDate: DateTime(2100));
           if (picked != null) {
+            // date = picked;
             String formattedDate = DateFormat('dd/MM/yyyy').format(picked);
             dateControlleur.text = formattedDate;
           }
