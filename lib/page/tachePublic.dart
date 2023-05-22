@@ -10,6 +10,8 @@ import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:tp2/page/tacheDetails.dart';
 import 'package:tp2/services/auth-service.dart';
 
+import '../main.dart';
+
 class TachePublic extends StatefulWidget {
   const TachePublic({super.key});
 
@@ -28,9 +30,7 @@ class _HomePageState extends State<TachePublic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff1040CC),
       appBar: AppBar(
-        backgroundColor: Color(0xff1040CC),
         title: Text(
           'Taches publiques',
           style: TextStyle(
@@ -40,9 +40,16 @@ class _HomePageState extends State<TachePublic> {
           ),
         ),
         actions: [
-          CircleAvatar(
-            backgroundImage: AssetImage('lib/images/honi.jpg'),
-          ),
+          IconButton(
+              icon: Icon(MyApp.themeNotifier.value == ThemeMode.light
+                  ? Icons.dark_mode
+                  : Icons.light_mode),
+              onPressed: () {
+                MyApp.themeNotifier.value =
+                    MyApp.themeNotifier.value == ThemeMode.light
+                        ? ThemeMode.dark
+                        : ThemeMode.light;
+              }),
           SizedBox(
             height: 25,
           ),
@@ -77,7 +84,6 @@ class _HomePageState extends State<TachePublic> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xff1040CC),
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: InkWell(
@@ -91,8 +97,8 @@ class _HomePageState extends State<TachePublic> {
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(colors: [
-                      Color(0xff00aeef),
-                      Color(0xff2d388a),
+                      Color.fromARGB(255, 239, 0, 119),
+                      Color.fromARGB(255, 94, 3, 180),
                     ])),
                 child: Icon(
                   Icons.person_3_sharp,
@@ -115,8 +121,8 @@ class _HomePageState extends State<TachePublic> {
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(colors: [
-                      Color(0xff00aeef),
-                      Color(0xff2d388a),
+                      Color.fromARGB(255, 239, 0, 119),
+                      Color.fromARGB(255, 94, 3, 180),
                     ])),
                 child: Icon(
                   Icons.add,
@@ -139,8 +145,8 @@ class _HomePageState extends State<TachePublic> {
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(colors: [
-                      Color(0xff00aeef),
-                      Color(0xff2d388a),
+                      Color.fromARGB(255, 239, 0, 119),
+                      Color.fromARGB(255, 94, 3, 180),
                     ])),
                 child: Icon(
                   Icons.people,

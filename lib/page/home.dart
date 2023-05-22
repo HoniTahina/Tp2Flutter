@@ -9,6 +9,8 @@ import 'package:tp2/page/tacheDetails.dart';
 import 'package:tp2/page/tachePublic.dart';
 import 'package:tp2/services/auth-service.dart';
 
+import '../main.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -23,26 +25,30 @@ class _HomePageState extends State<HomePage> {
   List<Selectionner> selectionne = [];
   Service authClass = Service();
   DateTime jour = DateTime.now();
-
   String etat = 'en cours';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff1040CC),
       appBar: AppBar(
-        backgroundColor: Color(0xff1040CC),
         title: Text(
           'Taches private',
           style: TextStyle(
-            fontSize: 34,
+            fontSize: 28,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
         ),
         actions: [
-          CircleAvatar(
-            backgroundImage: AssetImage('lib/images/honi.jpg'),
-          ),
+          IconButton(
+              icon: Icon(MyApp.themeNotifier.value == ThemeMode.light
+                  ? Icons.dark_mode
+                  : Icons.light_mode),
+              onPressed: () {
+                MyApp.themeNotifier.value =
+                    MyApp.themeNotifier.value == ThemeMode.light
+                        ? ThemeMode.dark
+                        : ThemeMode.light;
+              }),
           SizedBox(
             height: 25,
           ),
@@ -66,7 +72,7 @@ class _HomePageState extends State<HomePage> {
               child: Text(
                 DateFormat('dd/MM/yyyy').format(jour),
                 style: TextStyle(
-                  fontSize: 26,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
@@ -77,7 +83,6 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xff1040CC),
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: InkWell(
@@ -91,8 +96,8 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(colors: [
-                      Color(0xff00aeef),
-                      Color(0xff2d388a),
+                      Color.fromARGB(255, 239, 0, 119),
+                      Color.fromARGB(255, 94, 3, 180),
                     ])),
                 child: Icon(
                   Icons.person_3_sharp,
@@ -115,8 +120,8 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(colors: [
-                      Color(0xff00aeef),
-                      Color(0xff2d388a),
+                      Color.fromARGB(255, 239, 0, 119),
+                      Color.fromARGB(255, 94, 3, 180),
                     ])),
                 child: Icon(
                   Icons.add,
@@ -139,8 +144,8 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(colors: [
-                      Color(0xff00aeef),
-                      Color(0xff2d388a),
+                      Color.fromARGB(255, 239, 0, 119),
+                      Color.fromARGB(255, 94, 3, 180),
                     ])),
                 child: Icon(
                   Icons.people,
@@ -169,16 +174,20 @@ class _HomePageState extends State<HomePage> {
                     snapshot.data?.docs[index].data() as Map<String, dynamic>;
                 IconData icon;
                 Color couleurIcon;
-                // DateTime dateDebut =
-                //     DateTime.parse(tache['date_debut'].toString());
+                int? i = snapshot.data?.docs.length;
+                print(i);
+                // DateTime dateDebut = tache['date_debut'];
+                // DateTime dateFin = tache['date_fin'];
                 // DateTime currentDate = DateTime.now();
 
-                // if (dateDebut.compareTo(currentDate) < 0) {
+                // if (dateDebut.compareTo(currentDate) > 0) {
+                //   etat = 'En attente';
+                // }
+                // if (dateFin.compareTo(currentDate) > 0) {
                 //   etat = 'isBefore';
                 // }
-                // if (tache['date_debut'] < DateTime.now() &&
-                //     tache['date_fin'] > DateTime.now()) {
-                //   etat = 'En cours';
+                // if (dateDebut.compareTo(currentDate) < 0 && dateFin.compareTo(currentDate) > 0 ) {
+                //   etat = 'isBefore';
                 // }
 
                 switch (tache['categorie']) {

@@ -15,6 +15,8 @@ void main() async {
 }
 
 class MyApp extends StatefulWidget {
+  static final ValueNotifier<ThemeMode> themeNotifier =
+      ValueNotifier(ThemeMode.light);
   const MyApp({super.key});
 
   @override
@@ -40,9 +42,22 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: currentPage,
-    );
+    return ValueListenableBuilder<ThemeMode>(
+        valueListenable: MyApp.themeNotifier,
+        builder: (_, ThemeMode currentMode, __) {
+          return MaterialApp(
+            theme: ThemeData(
+                colorScheme: ColorScheme.fromSwatch().copyWith(
+                  primary: Color.fromARGB(255, 241, 1, 141),
+                ),
+                scaffoldBackgroundColor: Color.fromARGB(255, 233, 1, 202),
+                bottomNavigationBarTheme: BottomNavigationBarThemeData(
+                    backgroundColor: Color.fromARGB(255, 179, 4, 135))),
+            darkTheme: ThemeData.dark(),
+            themeMode: currentMode,
+            debugShowCheckedModeBanner: false,
+            home: currentPage,
+          );
+        });
   }
 }

@@ -28,8 +28,8 @@ class _PageAjoutState extends State<PageAjout> {
   firebase_auth.FirebaseAuth firebaseAuth = firebase_auth.FirebaseAuth.instance;
   String tachePriorite = "";
   String tacheCategorie = "";
-  // late DateTime dateD = DateTime.now();
-  // late DateTime dateF = DateTime.now();
+  late DateTime dateD;
+  late DateTime dateF;
   final _dateFin = TextEditingController();
   final _dateDebut = TextEditingController();
   void _Ajouter() {
@@ -51,9 +51,6 @@ class _PageAjoutState extends State<PageAjout> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          color: Color(0xff1040CC),
-        ),
         child: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
