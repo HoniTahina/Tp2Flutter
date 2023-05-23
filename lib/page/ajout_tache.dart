@@ -22,50 +22,49 @@ class PageAjout extends StatefulWidget {
   State<PageAjout> createState() => _PageAjoutState();
 }
 
-    String? _dateFin;
-    String? _dateDebut;
-    String? tacheCategorie;
-    String? _description;
-    String? _libelle;
-    String? tachePriorite;
+String? _dateFin;
+String? _dateDebut;
+String? tacheCategorie;
+String? _description;
+String? _libelle;
+String? tachePriorite;
 
-  Future<void> store() async {
-    String url = 'http://10.0.2.2:8000/api/Ajouter';
+Future<void> store() async {
+  String url = 'http://10.0.2.2:8000/api/Ajouter';
 
-    Map<String, dynamic> data = {
-      'date_fin': _dateFin,
-      'date_debut': _dateDebut,
-      'categorie': tacheCategorie,
-      'description': _description,
-      'libelle': _libelle,
-      'priorite': tachePriorite
-    };
+  Map<String, dynamic> data = {
+    'date_fin': _dateFin,
+    'date_debut': _dateDebut,
+    'categorie': tacheCategorie,
+    'description': _description,
+    'libelle': _libelle,
+    'priorite': tachePriorite
+  };
 
-    // Convert the data to JSON
-    String jsonData = jsonEncode(data);
+  // Convert the data to JSON
+  String jsonData = jsonEncode(data);
 
-    // Set the headers
-    Map<String, String> headers = {
-      'Content-Type': 'application/json',
-    };
+  // Set the headers
+  Map<String, String> headers = {
+    'Content-Type': 'application/json',
+  };
 
-    // Send the POST request
-    http.Response response = await http.post(
-      Uri.parse(url),
-      headers: headers,
-      body: jsonData,
-    );
+  // Send the POST request
+  http.Response response = await http.post(
+    Uri.parse(url),
+    headers: headers,
+    body: jsonData,
+  );
 
-    print(response);
+  print(response);
 
-    // Check the response status code
-    if (response.statusCode == 200) {
-      print('Data sent successfully.');
-    } else {
-      print('Error sending data. Status code: ${response.statusCode}');
-    }
+  // Check the response status code
+  if (response.statusCode == 200) {
+    print('Data sent successfully.');
+  } else {
+    print('Error sending data. Status code: ${response.statusCode}');
   }
-
+}
 
 class _PageAjoutState extends State<PageAjout> {
   final _libelleControlleur = TextEditingController();
@@ -78,9 +77,15 @@ class _PageAjoutState extends State<PageAjout> {
   String tacheCategorie = "";
   late DateTime dateD;
   late DateTime dateF;
-  final _dateFin = TextEditingController();
-  final _dateDebut = TextEditingController();
-  void _Ajouter() {
+  Future<void> _Ajouter() async {
+    _dateFin = _dateFinControl.text;
+    _dateDebut = _dateDebutControl.text;
+    tacheCategorie = tacheCategorie;
+    _description = _descriptionControlleur.text;
+    _libelle = _libelleControlleur.text;
+    tachePriorite = tachePriorite;
+
+    await store();
     FirebaseFirestore.instance.collection('Tache').add({
       'id': firebaseAuth.currentUser!.uid,
       'date_fin': _dateFinControl.text,
@@ -144,7 +149,6 @@ class _PageAjoutState extends State<PageAjout> {
                   ChampDeTexte(
                     hintText: 'Libellé de la tâche',
                     controlleur: _libelleControlleur,
-                    
                   ),
                   SizedBox(
                     height: 40,
