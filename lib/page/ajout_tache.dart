@@ -1,5 +1,7 @@
 // ignore_for_file: unused_element
 
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,7 @@ import 'package:tp2/composants/textfield.dart';
 import 'package:tp2/composants/texteArea.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:http/http.dart' as http;
 
 class PageAjout extends StatefulWidget {
   PageAjout({super.key});
@@ -18,6 +21,51 @@ class PageAjout extends StatefulWidget {
   @override
   State<PageAjout> createState() => _PageAjoutState();
 }
+
+    String? _dateFin;
+    String? _dateDebut;
+    String? tacheCategorie;
+    String? _description;
+    String? _libelle;
+    String? tachePriorite;
+
+  Future<void> store() async {
+    String url = 'http://10.0.2.2:8000/api/Ajouter';
+
+    Map<String, dynamic> data = {
+      'date_fin': _dateFin,
+      'date_debut': _dateDebut,
+      'categorie': tacheCategorie,
+      'description': _description,
+      'libelle': _libelle,
+      'priorite': tachePriorite
+    };
+
+    // Convert the data to JSON
+    String jsonData = jsonEncode(data);
+
+    // Set the headers
+    Map<String, String> headers = {
+      'Content-Type': 'application/json',
+    };
+
+    // Send the POST request
+    http.Response response = await http.post(
+      Uri.parse(url),
+      headers: headers,
+      body: jsonData,
+    );
+
+    print(response);
+
+    // Check the response status code
+    if (response.statusCode == 200) {
+      print('Data sent successfully.');
+    } else {
+      print('Error sending data. Status code: ${response.statusCode}');
+    }
+  }
+
 
 class _PageAjoutState extends State<PageAjout> {
   final _libelleControlleur = TextEditingController();
@@ -96,6 +144,7 @@ class _PageAjoutState extends State<PageAjout> {
                   ChampDeTexte(
                     hintText: 'Libellé de la tâche',
                     controlleur: _libelleControlleur,
+                    
                   ),
                   SizedBox(
                     height: 40,
