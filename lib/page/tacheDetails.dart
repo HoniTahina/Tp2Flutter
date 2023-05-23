@@ -191,7 +191,7 @@ class _TacheDetails extends State<TacheDetails> {
                   ),
                   Row(
                     children: [
-                      categorie('Divertissement', 0xff00FF00),
+                      categorie('Privée', 0xff00FF00),
                     ],
                   ),
                   SizedBox(
@@ -199,15 +199,7 @@ class _TacheDetails extends State<TacheDetails> {
                   ),
                   Row(
                     children: [
-                      categorie('Travail', 0Xffff6d6e),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      categorie('Etude', 0xfff29732),
-                      SizedBox(
-                        width: 12,
-                      ),
-                      categorie('Famille', 0xff2bc8d9),
+                      categorie('Publique', 0Xffff6d6e),
                     ],
                   ),
                   SizedBox(

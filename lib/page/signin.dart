@@ -9,6 +9,7 @@ import 'package:tp2/page/signup.dart';
 import 'package:tp2/services/auth-service.dart';
 import '../composants/bouttounLogo.dart';
 import '../composants/bouttonLogin.dart';
+import '../composants/bouttounLogofb.dart';
 import '../composants/champDeSaisie.dart';
 import 'Reset.dart';
 
@@ -62,7 +63,8 @@ class _LoginState extends State<Login> {
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 Center(child: Bouton(imagePath: 'lib/images/search.png')),
-                Center(child: Bouton(imagePath: 'lib/images/fb.png')),
+                SizedBox(width: 50),
+                Center(child: Boutonfb(imagePath: 'lib/images/fb.png')),
               ],
             ),
             SizedBox(height: 100),

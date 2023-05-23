@@ -141,7 +141,8 @@ class _SignupState extends State<Signup> {
         (route) => false,
       );
     } on FirebaseException catch (e) {
-      final snackbar = SnackBar(content: Text('Email invalide'));
+      final snackbar =
+          SnackBar(content: Text('Email invalide ou déjà enregister'));
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
   }

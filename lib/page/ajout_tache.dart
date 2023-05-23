@@ -28,11 +28,13 @@ String? tacheCategori;
 String? _description;
 String? _libelle;
 String? tachePriorit;
+String? uid;
 
 Future<void> store() async {
   String url = 'http://10.0.2.2:8000/api/Ajouter';
 
   Map<String, dynamic> data = {
+    'uid': uid,
     'date_fin': _dateFin,
     'date_debut': _dateDebut,
     'categorie': tacheCategori,
@@ -80,6 +82,7 @@ class _PageAjoutState extends State<PageAjout> {
 
   Future<void> _Ajouter() async {
     setState(() {
+      uid = firebaseAuth.currentUser!.uid;
       _dateFin = _dateFinControl.text;
       _dateDebut = _dateDebutControl.text;
       tacheCategorie = tacheCategorie;
@@ -183,7 +186,8 @@ class _PageAjoutState extends State<PageAjout> {
                   ),
                   TexteArea(
                     hintText: 'Description',
-                    controlleur: _descriptionControlleur, note: _description,
+                    controlleur: _descriptionControlleur,
+                    note: _description,
                   ),
                   SizedBox(
                     height: 50,
