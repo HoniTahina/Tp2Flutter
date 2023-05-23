@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tp2/composants/cardTache.dart';
 import 'package:tp2/page/ajout_tache.dart';
-import 'package:tp2/page/ajout_tache_public.dart';
 import 'package:tp2/page/home.dart';
 import 'package:tp2/page/signin.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
@@ -22,7 +21,7 @@ class TachePublic extends StatefulWidget {
 class _HomePageState extends State<TachePublic> {
   firebase_auth.FirebaseAuth firebaseAuth = firebase_auth.FirebaseAuth.instance;
   final Stream<QuerySnapshot> _stream =
-      FirebaseFirestore.instance.collection('TachePublic').snapshots();
+      FirebaseFirestore.instance.collection('Tache').snapshots();
   List<Selectionner> selectionne = [];
   Service authClass = Service();
   DateTime jour = DateTime.now();
@@ -113,7 +112,7 @@ class _HomePageState extends State<TachePublic> {
             icon: InkWell(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (builder) => PageAjoutPublic()));
+                    MaterialPageRoute(builder: (builder) => PageAjout()));
               },
               child: Container(
                 height: 52,
@@ -160,8 +159,10 @@ class _HomePageState extends State<TachePublic> {
         ],
       ),
       body: StreamBuilder(
-          stream:
-              FirebaseFirestore.instance.collection('TachePublic').snapshots(),
+          stream: FirebaseFirestore.instance
+              .collection('Tache')
+              .where('categorie', isEqualTo: 'Publique')
+              .snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return Center(child: CircularProgressIndicator());
@@ -183,23 +184,13 @@ class _HomePageState extends State<TachePublic> {
                 // }
 
                 switch (tache['categorie']) {
-                  case 'Divertissement':
-                    icon = Icons.movie;
+                  case 'Privée':
+                    icon = Icons.business;
                     couleurIcon = Color(0xff35DA00);
                     break;
-                  case 'Travail':
+                  case 'Publique':
                     icon = Icons.business;
-                    couleurIcon = Color(0xffFB6E72);
-                    break;
-
-                  case 'Etude':
-                    icon = Icons.school;
-                    couleurIcon = Color(0xffEE973A);
-                    break;
-
-                  case 'Famille':
-                    icon = Icons.people;
-                    couleurIcon = Color(0xff56D0DE);
+                    couleurIcon = Color.fromARGB(255, 237, 0, 8);
                     break;
 
                   default:

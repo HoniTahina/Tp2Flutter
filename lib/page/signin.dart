@@ -62,13 +62,6 @@ class _LoginState extends State<Login> {
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 Center(child: Bouton(imagePath: 'lib/images/search.png')),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-
-              // ignore: prefer_const_literals_to_create_immutables
-              children: [
                 Center(child: Bouton(imagePath: 'lib/images/fb.png')),
               ],
             ),

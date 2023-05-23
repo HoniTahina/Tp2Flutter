@@ -48,7 +48,7 @@ dependencies:
 
 flutter_native_splash:
   background_image: lib/images/bak.png
-  image: lib/images/logo2.png
+  image: lib/images/todo.png
 
 dev_dependencies:
   flutter_test:

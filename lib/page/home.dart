@@ -162,6 +162,7 @@ class _HomePageState extends State<HomePage> {
           stream: FirebaseFirestore.instance
               .collection('Tache')
               .where('id', isEqualTo: firebaseAuth.currentUser!.uid)
+              .where('categorie', isEqualTo: 'Privée')
               .snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
@@ -191,23 +192,13 @@ class _HomePageState extends State<HomePage> {
                 // }
 
                 switch (tache['categorie']) {
-                  case 'Divertissement':
-                    icon = Icons.movie;
+                  case 'Privée':
+                    icon = Icons.person;
                     couleurIcon = Color(0xff35DA00);
                     break;
-                  case 'Travail':
+                  case 'Publique':
                     icon = Icons.business;
                     couleurIcon = Color(0xffFB6E72);
-                    break;
-
-                  case 'Etude':
-                    icon = Icons.school;
-                    couleurIcon = Color(0xffEE973A);
-                    break;
-
-                  case 'Famille':
-                    icon = Icons.people;
-                    couleurIcon = Color(0xff56D0DE);
                     break;
 
                   default:

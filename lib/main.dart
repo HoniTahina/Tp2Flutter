@@ -32,8 +32,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     checkLogin();
-    initPlatformState();
     super.initState();
+    initPlatformState();
   }
 
   Future<void> initPlatformState() async {
