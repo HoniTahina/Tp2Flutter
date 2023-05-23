@@ -24,10 +24,10 @@ class PageAjout extends StatefulWidget {
 
 String? _dateFin;
 String? _dateDebut;
-String? tacheCategorie;
+String? tacheCategori;
 String? _description;
 String? _libelle;
-String? tachePriorite;
+String? tachePriorit;
 
 Future<void> store() async {
   String url = 'http://10.0.2.2:8000/api/Ajouter';
@@ -35,10 +35,10 @@ Future<void> store() async {
   Map<String, dynamic> data = {
     'date_fin': _dateFin,
     'date_debut': _dateDebut,
-    'categorie': tacheCategorie,
+    'categorie': tacheCategori,
     'description': _description,
     'libelle': _libelle,
-    'priorite': tachePriorite
+    'priorite': tachePriorit
   };
 
   // Convert the data to JSON
@@ -77,13 +77,16 @@ class _PageAjoutState extends State<PageAjout> {
   String tacheCategorie = "";
   late DateTime dateD;
   late DateTime dateF;
+
   Future<void> _Ajouter() async {
-    _dateFin = _dateFinControl.text;
-    _dateDebut = _dateDebutControl.text;
-    tacheCategorie = tacheCategorie;
-    _description = _descriptionControlleur.text;
-    _libelle = _libelleControlleur.text;
-    tachePriorite = tachePriorite;
+    setState(() {
+      _dateFin = _dateFinControl.text;
+      _dateDebut = _dateDebutControl.text;
+      tacheCategorie = tacheCategorie;
+      _description = _descriptionControlleur.text;
+      _libelle = _libelleControlleur.text;
+      tachePriorite = tachePriorite;
+    });
 
     await store();
     FirebaseFirestore.instance.collection('Tache').add({
@@ -149,6 +152,7 @@ class _PageAjoutState extends State<PageAjout> {
                   ChampDeTexte(
                     hintText: 'Libellé de la tâche',
                     controlleur: _libelleControlleur,
+                    note: _libelle,
                   ),
                   SizedBox(
                     height: 40,
@@ -179,7 +183,7 @@ class _PageAjoutState extends State<PageAjout> {
                   ),
                   TexteArea(
                     hintText: 'Description',
-                    controlleur: _descriptionControlleur,
+                    controlleur: _descriptionControlleur, note: _description,
                   ),
                   SizedBox(
                     height: 50,
@@ -209,7 +213,7 @@ class _PageAjoutState extends State<PageAjout> {
                   SizedBox(height: 15),
                   champDate(
                     hintText: 'dd/mm/yyyy',
-                    dateControlleur: _dateDebutControl,
+                    dateControlleur: _dateDebutControl, note: _dateDebut,
                     // date: dateD,
                   ),
                   SizedBox(height: 15),
@@ -217,7 +221,7 @@ class _PageAjoutState extends State<PageAjout> {
                   SizedBox(height: 15),
                   champDate(
                     hintText: 'dd/mm/yyyy',
-                    dateControlleur: _dateFinControl,
+                    dateControlleur: _dateFinControl, note: _dateFin,
                     // date: dateF,
                   ),
                   SizedBox(height: 15),
@@ -237,6 +241,7 @@ class _PageAjoutState extends State<PageAjout> {
       onTap: () {
         setState(() {
           tachePriorite = label;
+          tachePriorit = label;
         });
       },
       child: Chip(
@@ -267,6 +272,7 @@ class _PageAjoutState extends State<PageAjout> {
       onTap: () {
         setState(() {
           tacheCategorie = label;
+          tacheCategori = label;
         });
       },
       child: Chip(

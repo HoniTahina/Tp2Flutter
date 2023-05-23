@@ -31,6 +31,14 @@ class _TacheDetails extends State<TacheDetails> {
   bool modifier = false;
   late DateTime dateD;
   late DateTime dateF;
+
+  String? _dateFin;
+  String? _dateDebut;
+  String? tacheCategori;
+  String? _description;
+  String? _libelle;
+  String? tachePriorit;
+
   @override
   void initState() {
     _libelleControlleur = TextEditingController(text: widget.tache['libelle']);
@@ -140,6 +148,7 @@ class _TacheDetails extends State<TacheDetails> {
                   ChampDeTexte(
                     hintText: 'Libellé de la tache',
                     controlleur: _libelleControlleur,
+                    note: _libelle,
                   ),
                   SizedBox(
                     height: 40,
@@ -171,6 +180,7 @@ class _TacheDetails extends State<TacheDetails> {
                   TexteArea(
                     hintText: 'Description',
                     controlleur: _descriptionControlleur,
+                    note: _description,
                   ),
                   SizedBox(
                     height: 50,
@@ -207,7 +217,7 @@ class _TacheDetails extends State<TacheDetails> {
                   SizedBox(height: 15),
                   champDate(
                     hintText: 'dd/mm/yyyy',
-                    dateControlleur: _dateDebutControl,
+                    dateControlleur: _dateDebutControl, note: _dateDebut,
                     // date: dateD,
                   ),
                   SizedBox(height: 15),
@@ -215,7 +225,7 @@ class _TacheDetails extends State<TacheDetails> {
                   SizedBox(height: 15),
                   champDate(
                     hintText: 'dd/mm/yyyy',
-                    dateControlleur: _dateFinControl,
+                    dateControlleur: _dateFinControl, note: _dateFin,
                     // date: dateF,
                   ),
                   SizedBox(height: 15),

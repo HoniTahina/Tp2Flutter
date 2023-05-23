@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class TexteArea extends StatelessWidget {
   final String hintText;
   final controlleur;
+  late  String? note;
 
-  TexteArea({super.key, required this.hintText, required this.controlleur});
+  TexteArea({required this.note, super.key, required this.hintText, required this.controlleur});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +18,9 @@ class TexteArea extends StatelessWidget {
       ),
       child: TextFormField(
         controller: controlleur,
+        onChanged: (value) {
+            note = value;
+        },
         style: TextStyle(
           color: Colors.black,
           fontSize: 22,

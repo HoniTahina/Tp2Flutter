@@ -4,8 +4,11 @@ import 'package:intl/intl.dart';
 class champDate extends StatelessWidget {
   final dateControlleur;
   final String hintText;
+  late  String? note;
+
   // DateTime date;
   champDate({
+    required this.note,
     super.key,
     required this.hintText,
     // required this.date,
@@ -23,6 +26,11 @@ class champDate extends StatelessWidget {
       ),
       child: TextFormField(
         controller: dateControlleur,
+        onChanged: (value) {
+           
+            note = value;
+          
+        },
         style: TextStyle(
           color: Colors.black,
           fontSize: 20,
